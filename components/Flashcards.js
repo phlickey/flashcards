@@ -10,7 +10,9 @@ import Quizz from './Quizz';
 import AddQuestion from './AddQuestion';
 import SingleDeckView from './SingleDeckView';
 import { initAppState } from '../actions';
-const TabNavigator = createMaterialBottomTabNavigator({
+
+
+const Home = createMaterialBottomTabNavigator({
     DeckList :{
       screen: DeckList,
       navigationOptions:{
@@ -32,7 +34,7 @@ const TabNavigator = createMaterialBottomTabNavigator({
   
 const StackNavigator = createStackNavigator({
 Home:{
-    screen: TabNavigator,
+    screen: Home,
     navigationOptions:{
         title: 'Flashcards'
     }
