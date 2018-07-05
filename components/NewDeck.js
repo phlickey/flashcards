@@ -13,11 +13,13 @@ class NewDeck extends Component {
     }
     addDeck = () => {
         let title = this.state.title;
-        this.props.addNewDeck(title);
-        this.setState({
-            title: ''
-        })
-        this.props.navigation.goBack();
+        if (title.length){
+            this.props.addNewDeck(title);
+            this.setState({
+                title: ''
+            })
+            this.props.navigation.goBack();
+        }
     }
     render (){
         return(
