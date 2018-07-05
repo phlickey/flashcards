@@ -12,13 +12,13 @@ class DeckList extends Component {
                     let title = decks[deckId].title;
                     return (<View key={idx}>
                         <Text>{title}</Text>
-                        <TouchableHighlight onPress={()=>{this.props.navigation.navigate('Quizz')}}>
+                        <TouchableHighlight onPress={()=>{this.props.navigation.navigate('Quizz', {deckId})}}>
                             <Text>Go To Quizz </Text>
                         </TouchableHighlight>
-                        <TouchableHighlight onPress={()=>{this.props.navigation.navigate('AddQuestion')}}>
+                        <TouchableHighlight onPress={()=>{this.props.navigation.navigate('AddQuestion', {deckId})}}>
                             <Text>Add AddQuestion</Text>
                         </TouchableHighlight>
-                        <TouchableHighlight onPress={()=>{this.props.navigation.navigate('SingleDeck')}}>
+                        <TouchableHighlight onPress={()=>{this.props.navigation.navigate('SingleDeck', {deckId})}}>
                             <Text>View Single Deck</Text>
                         </TouchableHighlight>
                         </View>)

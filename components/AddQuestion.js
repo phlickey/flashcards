@@ -5,7 +5,7 @@ class AddQuestion extends Component{
     render(){
         return(
             <View>
-                <Text>Add Question</Text>
+                <Text>Add Question to {this.props.navigation.state.params.deckId}</Text>
             </View>
         )
     }

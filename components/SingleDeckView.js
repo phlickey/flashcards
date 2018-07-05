@@ -5,7 +5,7 @@ class SingleDeckView extends Component{
     render(){
         return(
             <View>
-                <Text>Single Deck</Text>
+                <Text>Single Deck for {this.props.navigation.state.params.deckId}</Text>
             </View>
         )
     }
