@@ -23,8 +23,8 @@ class SingleDeckView extends Component{
                 <TouchableOpacity style={styles.button}onPress={()=>{this.props.navigation.navigate('AddQuestion', {deckId})}}>
                     <Text style={styles.buttonText}>Add Question</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}onPress={()=>{this.props.navigation.navigate('Quizz', {deckId})}}>
-                    <Text style={styles.buttonText}>Start Quizz</Text>
+                <TouchableOpacity style={styles.button}onPress={()=>{this.props.navigation.navigate('Quiz', {deckId})}}>
+                    <Text style={styles.buttonText}>Start Quiz</Text>
                 </TouchableOpacity>
                 </View>
             </View>
@@ -48,6 +48,7 @@ let styles = StyleSheet.create({
         backgroundColor: '#ddd',
     },
     questionSingle:{
+        flex: 1,
         margin: 5,
         padding: 5,
         borderWidth: 0.5

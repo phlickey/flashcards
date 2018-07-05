@@ -1,9 +1,11 @@
 import {AsyncStorage} from 'react-native';
 import uuid from 'uuid/v4';
-export const FLASHCARD_STORAGE_KEY = 'Flashcards:flashcards'
+import { Notifications, Permissions } from 'expo'
+export const FLASHCARD_STORAGE_KEY = 'Flashcards:flashcards';
+export const FLASHCARD_NOTIFICATION_KEY = 'Flashcards:notifications';
 // getDecks: return all of the decks along with their titles, questions, and answers.
 export async function getDecks(){
-    //AsyncStorage.clear()
+    // AsyncStorage.clear()
     let decks = await AsyncStorage.getItem(FLASHCARD_STORAGE_KEY);
     return JSON.parse(decks);
 }
@@ -42,3 +44,53 @@ export async function initDecks(decks){
 }
 
 
+export function clearLocalNotification () {
+    return AsyncStorage.removeItem(FLASHCARD_NOTIFICATION_KEY)
+      .then(Notifications.cancelAllScheduledNotificationsAsync)
+}
+
+const createNotification = () => ({
+    title: "Don't forget to study",
+    body: "Quiz yourself today, to keep your skills sharp!",
+    ios: {
+    sound: true,
+    },
+    android: {
+    sound: true,
+    priority: 'high',
+    sticky: false,
+    vibrate: true,
+    }
+});
+
+  
+export function setLocalNotification () {
+    AsyncStorage.getItem(FLASHCARD_NOTIFICATION_KEY)
+        .then(JSON.parse)
+        .then((data) => {
+            if (data === null) {
+                Permissions.askAsync(Permissions.NOTIFICATIONS)
+                .then(({ status }) => {
+                    if (status === 'granted') {
+                        Notifications.cancelAllScheduledNotificationsAsync()
+                            .then(()=>{
+                                let tomorrow = new Date();
+                                tomorrow.setDate(tomorrow.getDate() + 1);
+                                tomorrow.setHours(21);
+                                tomorrow.setMinutes(0);
+                                tomorrow.setSeconds(0);
+                                return Notifications.scheduleLocalNotificationAsync(
+                                    createNotification(),
+                                    {
+                                    time: tomorrow,
+                                    repeat: 'day',
+                                    }
+                                )
+                            }).then(()=>{
+                                AsyncStorage.setItem(FLASHCARD_NOTIFICATION_KEY, JSON.stringify({timeSet:true}))
+                            })
+                    }
+                })
+            }
+        })
+}

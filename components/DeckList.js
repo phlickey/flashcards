@@ -13,8 +13,8 @@ class DeckList extends Component {
                     return (<View key={idx} style={styles.deckSummaryContainer}>
                         <Text style={styles.deckHeader}>{title}: {questions.length} Questions </Text>
                         <View style={styles.buttonContainer}>
-                        <TouchableHighlight style={styles.button} onPress={()=>{this.props.navigation.navigate('Quizz', {deckId})}}>
-                            <Text style={styles.center}>Go To Quizz </Text>
+                        <TouchableHighlight style={styles.button} onPress={()=>{this.props.navigation.navigate('Quiz', {deckId})}}>
+                            <Text style={styles.center}>Go To Quiz </Text>
                         </TouchableHighlight>
                         <TouchableHighlight style={styles.button} onPress={()=>{this.props.navigation.navigate('AddQuestion', {deckId})}}>
                             <Text style={styles.center}>Add Question</Text>

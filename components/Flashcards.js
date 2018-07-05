@@ -6,7 +6,7 @@ import {createStackNavigator} from 'react-navigation';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 import NewDeck from './NewDeck';
 import DeckList from './DeckList';
-import Quizz from './Quizz';
+import Quiz from './Quiz';
 import AddQuestion from './AddQuestion';
 import SingleDeckView from './SingleDeckView';
 import { initAppState } from '../actions';
@@ -39,10 +39,10 @@ Home:{
         title: 'Flashcards'
     }
 },
-Quizz: {
-    screen: Quizz,
+Quiz: {
+    screen: Quiz,
     navigationOptions:{
-    title: 'Quizz Yourself'
+    title: 'Quiz Yourself'
     }
 },
 AddQuestion: {
