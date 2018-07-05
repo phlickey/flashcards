@@ -1,4 +1,4 @@
-import {addCardToDeck, getDecks, initialiseAsyncStorage, initDecks} from '../utils/index';
+import {addCardToDeck, getDecks, initDecks, saveDeckTitle} from '../utils/index';
 import defaultData from '../utils/defaultData.json';
 export const ADD_NEW_QUESTION = "ADD_NEW_QUESTION";
 export const ADD_NEW_DECK = "ADD_NEW_DECK";
@@ -29,7 +29,7 @@ export function initAppState(){
             if (decks === null ){
                 await initDecks(defaultData);
             }
-            let payload = decks!==null ? JSON.parse(decks):  defaultData;
+            let payload = decks!==null ? decks:  defaultData;
             dispatch({
                 type: INIT_DATA,
                 payload
@@ -38,3 +38,16 @@ export function initAppState(){
         })
     }
 };
+
+
+export function addNewDeck(deckTitle) {
+    return (dispatch) => {
+        saveDeckTitle(deckTitle)
+            .then(getDecks).then(decks=>{
+                dispatch({
+                    type: ADD_NEW_DECK,
+                    payload: decks
+                })
+            });
+    }
+}

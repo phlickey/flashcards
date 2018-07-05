@@ -6,21 +6,21 @@ class DeckList extends Component {
     render (){
         let {decks} = this.props;
         return(
-            <ScrollView >
+            <ScrollView style={styles.list}>
                 <Text style={styles.titleText}>Your Decks</Text>
-                {Object.keys(decks).concat(Object.keys(decks)).map((deckId, idx)=>{
-                    let title = decks[deckId].title;
+                {Object.keys(decks).map((deckId, idx)=>{
+                    let {title, questions }= decks[deckId];
                     return (<View key={idx} style={styles.deckSummaryContainer}>
-                        <Text style={styles.deckHeader}>{title}</Text>
+                        <Text style={styles.deckHeader}>{title}: {questions.length} Questions </Text>
                         <View style={styles.buttonContainer}>
                         <TouchableHighlight style={styles.button} onPress={()=>{this.props.navigation.navigate('Quizz', {deckId})}}>
-                            <Text>Go To Quizz </Text>
+                            <Text style={styles.center}>Go To Quizz </Text>
                         </TouchableHighlight>
                         <TouchableHighlight style={styles.button} onPress={()=>{this.props.navigation.navigate('AddQuestion', {deckId})}}>
-                            <Text>Add AddQuestion</Text>
+                            <Text style={styles.center}>Add Question</Text>
                         </TouchableHighlight>
                         <TouchableHighlight style={styles.button} onPress={()=>{this.props.navigation.navigate('SingleDeck', {deckId})}}>
-                            <Text>View Single Deck</Text>
+                            <Text style={styles.center}>View Deck</Text>
                         </TouchableHighlight>
                         </View>
                         </View>)
@@ -35,7 +35,10 @@ let styles = StyleSheet.create({
         backgroundColor: 'lightgreen',
         padding: 5,
         margin: 6,
-        flex: 1
+        flex: 1,
+    },
+    center:{
+        textAlign: 'center'
     },
     buttonContainer: {
         flexDirection: 'row',
@@ -57,6 +60,9 @@ let styles = StyleSheet.create({
         fontSize: 25,
         textAlign: 'center',
         padding: 6
+    },
+    list:{
+        backgroundColor: '#444'
     }
 });
 

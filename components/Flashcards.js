@@ -65,7 +65,6 @@ class Flashcards extends Component{
         this.props.initAppState();
     }
     render(){
-        let {state} = this.props;
         return(
         <View style={{ flex: 1, backgroundColor: 'lightgreen' }}>
             <CustomStatusBar backgroundColor={'lightgreen'} barStyle="light-content" />

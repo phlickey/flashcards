@@ -1,15 +1,43 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TextInput, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
+import { connect } from 'react-redux';
+import { addNewDeck } from '../actions';
 //import {connect} from 'react-redux';
 
 class NewDeck extends Component {
+    constructor(){
+        super();
+        this.state = {
+            title: ''
+        }
+    }
+    addDeck = () => {
+        let title = this.state.title;
+        this.props.addNewDeck(title);
+        this.setState({
+            title: ''
+        })
+        this.props.navigation.goBack();
+    }
     render (){
         return(
-            <View>
+            <KeyboardAvoidingView behavior='padding' style={{flex:1, backgroundColor:'purple', justifyContent: 'center'}}>
                 <Text> New Deck </Text>
-            </View>
+                <TextInput value={this.state.title} placeholder='New Deck Title' onChangeText={(title)=>{
+                    this.setState({
+                        title
+                    })
+                }}/>
+                <TouchableOpacity onPress={this.addDeck}>
+                    <Text> Add Deck </Text>
+                </TouchableOpacity>
+            </KeyboardAvoidingView>
         )
     }
 }
 
-export default NewDeck;
+
+const mapDispatchToProps = (dispatch)=>({
+    addNewDeck:  (title) => {dispatch(addNewDeck(title))}
+});
+export default connect(null, mapDispatchToProps)(NewDeck);
