@@ -11,7 +11,9 @@ class DeckList extends Component {
                 {Object.keys(decks).map((deckId, idx)=>{
                     let {title, questions }= decks[deckId];
                     return (<View key={idx} style={styles.deckSummaryContainer}>
+                        <TouchableHighlight onPress={()=>{this.props.navigation.navigate('SingleDeck', {deckId})}}>
                         <Text style={styles.deckHeader}>{title}: {questions.length} Questions </Text>
+                        </TouchableHighlight>
                         <View style={styles.buttonContainer}>
                         <TouchableHighlight style={styles.button} onPress={()=>{this.props.navigation.navigate('Quiz', {deckId})}}>
                             <Text style={styles.center}>Go To Quiz </Text>
