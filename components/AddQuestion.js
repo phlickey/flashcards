@@ -19,7 +19,7 @@ class AddQuestion extends Component{
             question: '',
             answer: ''
         })
-        this.props.navigation.navigate('Home');
+        this.props.navigation.goBack();
     }
     render(){
         return(
