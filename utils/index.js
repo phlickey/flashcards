@@ -1,11 +1,17 @@
 import {AsyncStorage} from 'react-native';
-
+import data from './sampledata.json';
 export const FLASHCARD_STORAGE_KEY = 'Flashcards:flashcards'
-
+export async function initialiseAsyncStorage(){
+    return AsyncStorage.setItem(FLASHCARD_STORAGE_KEY, JSON.stringify(data))
+}
 // getDecks: return all of the decks along with their titles, questions, and answers.
 export async function getDecks(){
     let decks = await AsyncStorage.getItem(FLASHCARD_STORAGE_KEY);
-    return decks;
+    if (decks===null) {
+        return {}
+    }else {
+        return decks;
+    }
 }
 // getDeck: take in a single id argument and return the deck associated with that id. 
 export async function getDeck(deckId){
@@ -14,8 +20,8 @@ export async function getDeck(deckId){
 }
 
 // saveDeckTitle: take in a single title argument and add it to the decks. 
-export async function saveDeckTitle({deckId, title}) {
-    return await AsyncStorage.mergeItem(FLASHCARD_STORAGE_KEY, JSON.stringify({
+export function saveDeckTitle({deckId, title}) {
+    return AsyncStorage.mergeItem(FLASHCARD_STORAGE_KEY, JSON.stringify({
         [deckId]:{title, questions: []}
     }))
 }
