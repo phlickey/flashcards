@@ -7,6 +7,8 @@ This is an app to help you study. Use it to create flash cards with questions an
 Below are instructions for how to run, develop and extend this app:
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
+App tested on Android in OnePlus One A000 Bacon, Emulated Nexus 5 and Expo Snack.
+
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
 
 ## Table of Contents
