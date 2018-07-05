@@ -1,3 +1,10 @@
+# Flashcards
+
+Built in partial completion of the react developer nanodegree. Available for preview here: https://expo.io/@phlickey/flashcards using the expo app available for [iOs](https://itunes.apple.com/app/apple-store/id982107779) and [android](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www)
+
+This is an app to help you study. Use it to create flash cards with questions and answers. Then use it to quiz yourself!
+
+Below are instructions for how to run, develop and extend this app:
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
