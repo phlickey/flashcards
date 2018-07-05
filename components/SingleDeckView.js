@@ -10,5 +10,4 @@ class SingleDeckView extends Component{
         )
     }
 }
-
 export default SingleDeckView;

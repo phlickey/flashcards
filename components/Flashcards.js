@@ -24,20 +24,18 @@ const TabNavigator = createMaterialBottomTabNavigator({
       }
     },
   },{
-    labelStyle: {
-      fontSize: 12,
-    },
-    tabStyle: {
-      width: 100,
-    },
-    style: {
-      backgroundColor: 'blue',
-    },
+    initialRouteName: 'DeckList',
+    activeTintColor: '#fff',
+    inactiveTintColor: '#bbb',
+    barStyle: { backgroundColor: 'green' },
   });
   
 const StackNavigator = createStackNavigator({
-default:{
+Home:{
     screen: TabNavigator,
+    navigationOptions:{
+        title: 'Flashcards'
+    }
 },
 Quizz: {
     screen: Quizz,
@@ -58,7 +56,7 @@ SingleDeck: {
     }
 },
 }, {
-
+    
 })
 
 
