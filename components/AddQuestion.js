@@ -14,12 +14,14 @@ class AddQuestion extends Component{
         let{ question, answer }= this.state;
         let deckId = this.props.navigation.state.params.deckId;
         let addNewQuestion = this.props.addNewQuestion;
-        addNewQuestion(deckId, {question, answer});
-        this.setState({
-            question: '',
-            answer: ''
-        })
-        this.props.navigation.goBack();
+        if (question.length&&answer.length){
+            addNewQuestion(deckId, {question, answer});
+            this.setState({
+                question: '',
+                answer: ''
+            })
+            this.props.navigation.goBack();
+        }
     }
     render(){
         return(
@@ -38,9 +40,11 @@ class AddQuestion extends Component{
                     })
                 }}/>
                 </View>
-                <TouchableOpacity onPress={this.submit}>
-                    <Text> Add Question </Text>
-                </TouchableOpacity>
+                <View style={{flexDirection:'row', justifyContent:'center'}}>
+                    <TouchableOpacity onPress={this.submit} style={{padding: 15, backgroundColor:'white', margin: 5}}>
+                        <Text> Add Question </Text>
+                    </TouchableOpacity>
+                </View>
             </KeyboardAvoidingView>
         )
     }

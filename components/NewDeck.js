@@ -28,9 +28,11 @@ class NewDeck extends Component {
                         title
                     })
                 }}/>
-                <TouchableOpacity onPress={this.addDeck}>
+                <View style={{flexDirection:'row', justifyContent:'center'}}>
+                <TouchableOpacity onPress={this.addDeck} style={{padding: 15, backgroundColor:'white', margin: 5}}>
                     <Text> Add Deck </Text>
                 </TouchableOpacity>
+                </View>
             </KeyboardAvoidingView>
         )
     }
